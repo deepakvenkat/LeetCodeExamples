@@ -4,6 +4,8 @@ import static org.junit.Assert.*;
 import com.company.LongestSubstring;
 import com.company.ReverseInteger;
 import com.company.LongestSubstringPalindrome;
+import com.company.LongestCommonPrefix;
+
 public class Main {
 
     public static void main(String[] args) {
@@ -21,5 +23,12 @@ public class Main {
         assertEquals("abba", LongestSubstringPalindrome.longestPalindrome("abba"));
         assertEquals("ababa", LongestSubstringPalindrome.longestPalindrome("ababad"));
         assertEquals("a", LongestSubstringPalindrome.longestPalindrome("abc"));
+
+        // LongestCommonPrefix
+        assertEquals("flo", LongestCommonPrefix.longestCommonPrefix(new String[]{"flower", "float", "flow"}));
+        assertEquals("", LongestCommonPrefix.longestCommonPrefix(new String[]{"flower", "float", "dog"}));
+        assertEquals("", LongestCommonPrefix.longestCommonPrefix(new String[]{"", "float", "float"}));
+        assertEquals("", LongestCommonPrefix.longestCommonPrefix(new String[]{""}));
+        assertEquals("", LongestCommonPrefix.longestCommonPrefix(new String[]{}));
     }
 }
