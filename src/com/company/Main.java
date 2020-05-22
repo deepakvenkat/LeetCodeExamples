@@ -5,6 +5,7 @@ import com.company.LongestSubstring;
 import com.company.ReverseInteger;
 import com.company.LongestSubstringPalindrome;
 import com.company.LongestCommonPrefix;
+import com.company.RomanNumbers;
 
 public class Main {
 
@@ -30,5 +31,8 @@ public class Main {
         assertEquals("", LongestCommonPrefix.longestCommonPrefix(new String[]{"", "float", "float"}));
         assertEquals("", LongestCommonPrefix.longestCommonPrefix(new String[]{""}));
         assertEquals("", LongestCommonPrefix.longestCommonPrefix(new String[]{}));
+
+        // RomanNumbers
+        assertEquals(1994, RomanNumbers.romanToInt("MCMXCIV"));
     }
 }
