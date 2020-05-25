@@ -1,6 +1,8 @@
 package com.company;
 
 import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.Set;
 import java.util.Map;
 
 public class RomanNumbers {
@@ -25,6 +27,23 @@ public class RomanNumbers {
         previousValue.put('M', 'C');
 
     }
+    static Map <Integer, String> valueSymbolMap = new LinkedHashMap();
+    static {
+        valueSymbolMap.put(1000, "M");
+        valueSymbolMap.put(900, "CM");
+        valueSymbolMap.put(500, "D");
+        valueSymbolMap.put(400, "CD");
+        valueSymbolMap.put(100, "C");
+        valueSymbolMap.put(90, "XC");
+        valueSymbolMap.put(50, "L");
+        valueSymbolMap.put(40, "XL");
+        valueSymbolMap.put(10, "X");
+        valueSymbolMap.put(9, "IX");
+        valueSymbolMap.put(5, "V");
+        valueSymbolMap.put(4, "IV");
+        valueSymbolMap.put(1, "I");
+    }
+
     public static int romanToInt(String s) {
         int sLength = s.length();
         Character[] sChars = s.chars().mapToObj(c -> (char)c).toArray(Character[]::new);
@@ -48,6 +67,24 @@ public class RomanNumbers {
             }
         }
 
+        return result;
+    }
+
+    public static String intToRoman(int num) {
+        Set<Integer> keys = valueSymbolMap.keySet();
+        Integer [] keysI = keys.toArray(new Integer[keys.size()]);
+        String result = "";
+        int i = 0;
+        while (num > 0) {
+            while (i < keysI.length) {
+                if (num - keysI[i] >= 0) {
+                    result = result.concat(valueSymbolMap.get(keysI[i]));
+                    num -= keysI[i];
+                } else {
+                    i+= 1;
+                }
+            }
+        }
         return result;
     }
 }
