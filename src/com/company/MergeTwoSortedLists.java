@@ -32,4 +32,21 @@ public class MergeTwoSortedLists {
         }
         return head.getNext();
     }
+
+    public ListNode mergeKLists(ListNode[] lists) {
+        if (lists.length == 0) {
+            return null;
+        }
+        if (lists.length == 1) {
+            return lists[0];
+        }
+        ListNode result = mergeTwoLists(lists[0], lists[1]);
+        if (lists.length == 2) {
+            return result;
+        }
+        for (int i = 2; i < lists.length; i++) {
+            result = mergeTwoLists(result, lists[i]);
+        }
+        return result;
+    }
 }

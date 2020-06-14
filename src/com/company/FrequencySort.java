@@ -43,4 +43,21 @@ public class FrequencySort {
         }
         return result;
     }
+
+    public List<String> topKFrequent(String[] words, int k) {
+        Map<String, Integer> countMap = new HashMap<String, Integer> ();
+        for (String word: words) {
+            countMap.put(word, countMap.getOrDefault(word, 0) + 1);
+        }
+        List<String> uniqueWords = new ArrayList(countMap.keySet());
+        List<String> result = new ArrayList<String> ();
+        uniqueWords.sort((w1, w2) -> {
+            if (countMap.get(w1) == countMap.get(w2)) {
+                return w1.compareTo(w2);
+            } else {
+                return countMap.get(w2) - countMap.get(w1);
+            }
+        });
+        return uniqueWords.subList(0, k);
+    }
 }
